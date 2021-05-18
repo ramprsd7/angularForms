@@ -1,0 +1,9 @@
+/* .ng-touched.ng-dirty.ng-invalid{
+    border: 1px solid red;
+    color: red;
+ } */
+
+.ng-touched.ng-pristine.ng-invalid.inputs{
+    border: 1px solid red;
+    color: red;
+}  

@@ -1,0 +1,58 @@
+<p>
+    <mat-toolbar>
+        <span>Ram - Angular Forms Examples</span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user
+        </mat-icon>
+    </mat-toolbar>
+</p>
+
+<div class="container col-8">
+    <form #movieform="ngForm" (submit)="onSubmit(movieform)">
+        <label>
+            Movie Name:
+            <input type="text" name="movieName" #Name="ngModel" [(ngModel)]="movieName" placeholder="enter Movie name.."
+                required>
+        </label>
+        <label *ngIf="Name.invalid && (Name.touched || Name.dirty)" style="color:red">Movie Name Required.. </label>
+        <br />
+        <br />
+
+        <label>
+            Movie Hero:
+            <input type="text" name="movieHero" #Hero="ngModel" [(ngModel)]="movieHero" placeholder="enter Hero name.."
+                required>
+        </label>
+        <label *ngIf="Hero.invalid && (Hero.touched || Hero.dirty)" style="color: red;">Hero Name Required..</label>
+        <br />
+        <br />
+
+        <label>
+            Movie Director:
+            <input type="text" name="movieDirector" #Dir="ngModel" [(ngModel)]="movieDirector"
+                placeholder="enter Director name.." required>
+        </label>
+        <label *ngIf="Dir.invalid && (Dir.touched || Dir.dirty)" style="color: red;">Director Name Required..</label>
+        <br />
+        <br />
+
+        <label>
+            Movie Hours:
+            <input type="number" name="movieHrs" #hrs="ngModel" [(ngModel)]="movieHrs" placeholder="enter Movie hours.."
+                required>
+        </label>
+        <label *ngIf="hrs.invalid && (hrs.touched || hrs.dirty)" style="color: red;">Hours Required..</label>
+        <br />
+        <br />
+
+
+        <button class="tmp-btn" type="submit" mat-raised-button color="primary" [disabled]="!movieform.valid">
+            Submit</button>
+        <button class="tmp-btn" mat-raised-button color="warn" type="reset"> Reset</button>
+    </form>
+
+
+</div>
+
+<div class="col-md-12">
+    {{movieform.value | json}}
+</div>

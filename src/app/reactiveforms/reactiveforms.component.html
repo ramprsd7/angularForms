@@ -1,0 +1,83 @@
+<p>
+    <mat-toolbar>
+        <span>Ram - Angular Forms Examples</span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user
+        </mat-icon>
+    </mat-toolbar>
+</p>
+
+
+<div class="container col-12">
+
+    <form [formGroup]="studentForm1" (submit)="onSubmit()">
+        <label> First Name :
+            <input class="inputs" type="text" formControlName="firstName" placeholder="enter first name ..">
+        </label>
+
+        <label *ngIf="firstName.touched && firstName.invalid" style="color: red;">
+            <div *ngIf="firstName.errors.required">First Name Required</div>
+            <div *ngIf="firstName.errors.minlength"> First name Minimum of {{firstName.errors.minlength.requiredLength}}
+                character </div>
+            <div *ngIf="firstName.errors.maxlength">First name maximum of 7 character </div>
+        </label>
+        <br />
+
+        <label>Last Name :
+            <input class="inputs" type="text" formControlName="lastName" placeholder="enter last name ..">
+        </label>
+
+        <label *ngIf="lastName.touched && lastName.invalid" style="color: red;">
+            <div *ngIf="lastName.errors.required">Last Name Required</div>
+            <div *ngIf="lastName.errors.minlength"> Last name Minimum of {{lastName.errors.minlength.requiredLength}}
+                character </div>
+            <div *ngIf="lastName.errors.maxlength">Last name maximum of 7 character </div>
+        </label>
+        <br />
+
+
+        <label>Email :
+            <input class="inputs" type="text" formControlName="email" placeholder="enter last name ..">
+        </label>
+
+        <label *ngIf="email.touched && email.invalid" style="color: red;">
+            <div *ngIf="email.errors.required">Email id is Required</div>
+            <div *ngIf="email.errors.email">Enter a proper mail id ex : mail@gmail.com </div>
+        </label>
+        <br />
+
+        <h4>Address :</h4>
+        <div formGroupName="address">
+            <label>Street :
+                <input class="inputs" type="text" formControlName="street" placeholder="enter street ..">
+            </label>
+            <label> City :
+                <input class="inputs" type="text" formControlName="city" placeholder="enter city ..">
+            </label>
+            <label> State :
+                <input class="inputs" type="text" formControlName="state" placeholder="enter state ..">
+            </label>
+            <label> Zipcode :
+                <input class="inputs" type="text" formControlName="zipcode" placeholder="enter zipcode ..">
+            </label>
+            <label *ngIf="zipcode.touched && zipcode.invalid" style="color: red;">
+                <div *ngIf="zipcode.errors.required">Zipcode Required</div>
+                <div *ngIf="zipcode.errors.minlength"> Zipcode Minimum of {{zipcode.errors.minlength.requiredLength}}
+                    character </div>
+                <div *ngIf="zipcode.errors.maxlength">Zipcode maximum of 6 character </div>
+                <div *ngIf="zipcode.errors.pattern">Zipcode are numbers only .. </div>
+            </label>
+            <br />
+
+
+        </div>
+        <!-- <button type="submit" mat-raised-button color="primary" [disabled]="!studentForm1.valid">Submit</button> -->
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+
+    </form>
+
+</div>
+
+
+<div class="col-md-12">
+    {{studentForm1.value | json}}
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+<p>Button to add New emp</p>
+<p>After adding a new employee , Try Deleting the Employess each and another div with No data in Employees can be seen</p>
+  <button mat-button color="warn" (click)="onclick()">Add New employee</button>
+<div *ngIf="employees.length > 0" class="table-responsive">
+  <ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Salary</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees">
+          <td>{{emp.id}}</td>
+          <td>{{emp.name}}</td>
+          <td>{{emp.salary}}</td>
+          <td>
+            <button (click)="onremove(emp)">remove</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </ul>
+</div>
+
+<div *ngIf="employees.length == 0" style="background-color: salmon;">
+  No Employee data to display
+</div>
+
+
+</div>
+<div class="container col-md-4">
+  <h3>Custome Directive</h3>
+<p>
+  An custom Directive which converts Name into Lowercase in input fields
+</p>
+
+  <input type="text" class="form-control" appNumberFormat>
+</div>

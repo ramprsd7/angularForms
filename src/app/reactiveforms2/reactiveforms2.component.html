@@ -1,0 +1,116 @@
+<p>
+    <mat-toolbar>
+        <span>Ram - Angular Forms Examples</span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user
+        </mat-icon>
+    </mat-toolbar>
+</p>
+
+
+<div class="container col-12">
+
+    <form [formGroup]="studentForm" (submit)="onSubmit(studentForm)">
+
+
+        <div class="col-6">
+            <mat-form-field class="example-full-width">
+                <mat-label>First Name :</mat-label>
+                <input matInput formControlName="firstName" placeholder="enter first name .." aria-label="number">
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name :</mat-label>
+                <input matInput formControlName="lastName" placeholder="enter last name ..">
+            </mat-form-field>
+        </div>
+
+
+
+
+
+
+         <label>Last Name :
+            <input type="text" formControlName="lastName" placeholder="enter last name ..">
+        </label>
+        <h4>Address :</h4>
+        <div formGroupName="address">
+            <mat-form-field>
+                <mat-label>Street :</mat-label>
+                <input matInput type="text" formControlName="street" placeholder="enter street ..">
+
+            </mat-form-field>
+            <mat-form-field>
+                <label> City :
+                    <input matInput type="text" formControlName="city" placeholder="enter city ..">
+                </label>
+            </mat-form-field>
+            <mat-form-field>
+
+                <label> State :
+                    <input matInput type="text" formControlName="state" placeholder="enter state ..">
+                </label>
+            </mat-form-field>
+            <mat-form-field>
+
+                <label> Zipcode :
+                    <input matInput type="text" formControlName="zipcode" placeholder="enter zipcode ..">
+                </label>
+            </mat-form-field>
+        </div>
+        <h4>Department :</h4>
+        <div formArrayName="department">
+            <div *ngFor="let dep of studentForm.get('department')['controls']; let depIndex = index">
+                <div [formGroupName]="depIndex">
+                    <label> Dept ID :
+                        <input type="text" formControlName="deptId" placeholder="enter dept ID ..">
+                    </label>
+
+                    <label> Dept Name :
+                        <input type="text" formControlName="deptName" placeholder="enter dept name ..">
+                    </label>
+                    <label> Dept Role :
+                        <input type="text" formControlName="deptrole" placeholder="enter dept role ..">
+                    </label>
+                </div>
+            </div>
+        </div> 
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+
+    </form>
+
+</div>
+
+
+<div class="container">
+    <form [formGroup]="studForm" (submit)="onSUbmit(studForm)">
+
+        <label> Full Name :
+            <input formControlName="fullName" placeholder="enter first name ..">
+        </label>
+
+        <label> phone Number :
+            <input formControlName="phoneNumber" placeholder="enter phone number ..">
+        </label>
+
+        <div formGroupName="address">
+            <label>
+                <input formControlName="street"  placeholder="enter street ..">
+
+            </label>
+
+            <label>
+                <input formControlName="city" placeholder="enter city ..">
+
+            </label>
+            <label>
+                <input formControlName="zipCode"  placeholder="enter zipCode ..">
+
+            </label>
+        </div>
+
+        <button class="btn-reac" mat-raised-button color="primary" >Submit</button>
+        <button class="btn-reac"type="reset" mat-raised-button>Reset</button>
+    </form>
+    {{studForm.value | json }}
+</div>
